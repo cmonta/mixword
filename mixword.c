@@ -3,16 +3,63 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define MAX 45
+// to use isalpha
+#include <ctype.h>
+
+#define LENGTH 25
 
 int shuffle(char* ptr);
 
 void swap(char* a, char* b);
 
 
-int main(void)
+int main(int argc, char const *argv[])
 {
-	/* code */
+
+  //check for valid arguments
+  if (argc != 2)
+    {
+      printf("Usage: mixword textfile.txt\n");
+      return 1;
+    }
+
+  // open file given by argument
+  char* text = argv[1];
+  FILE* fp = fopen(text, "r");
+  if (fp == NULL)
+    {
+      printf("Could not open %s.\n", text);
+      //unload();
+      return 1;
+    }
+
+  //read each word from text file
+  char word[LENGTH+1];
+  //init index
+  int index = 0;
+
+  for (int c = fgetc(fp); c!= EOF; c = fgetc(fp))
+    {
+      //printf("%c\n", c);
+      if (isalpha(c)) {
+      word[index] = c;
+      index++;
+      }
+      else {
+      printf("%s\n", word);
+      index = 0;
+      }
+    }
+
+  /*
+  for (int i = 0; i<sizeof(fp);i++)
+    {
+      printf("%s", fp[i]);
+      printf("\n");
+    }
+  */
+  fclose(fp);
+        /* code */
 	char a[20];
 
 	printf("Entrez un mot : ");
@@ -23,8 +70,12 @@ int main(void)
 	shuffle(a);
 
 	printf("Le retour est %s\n", a );
+  
+
 
 	return 0;
+
+	
 }
 
 int shuffle(char* word)
