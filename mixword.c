@@ -25,11 +25,22 @@ int main(int argc, char const *argv[])
 
   // open file given by argument
   char* text = argv[1];
+
+  //todo create an output filename
+
   FILE* fp = fopen(text, "r");
   if (fp == NULL)
     {
       printf("Could not open %s.\n", text);
       //unload();
+      return 1;
+    }
+
+  // open outputfile to write mixed text
+  FILE* ofp = fopen("mixed.txt", "w");
+  if (ofp == NULL)
+    {
+      printf("Could not open outputfile");
       return 1;
     }
 
@@ -47,14 +58,18 @@ int main(int argc, char const *argv[])
       else {
       shuffle(word);
       printf("%s", word);
+      fprintf(ofp, "%s", word);
       printf("%c", c);
+      fprintf(ofp, "%c", c);
       index = 0;
       memset(word, 0, sizeof(word));
       }
     }
   printf("\n");
+  fprintf(ofp, "\n");
 
   fclose(fp);
+  fclose(ofp);
   return 0;
 	
 }
