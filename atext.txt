@@ -1,1 +1,5 @@
 This is a test text for the application.
+It can be read as a simple text or, when mixed, as another type of text.
+
+Best regards
+Cyril Montailler

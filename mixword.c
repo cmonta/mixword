@@ -46,10 +46,14 @@ int main(int argc, char const *argv[])
       index++;
       }
       else {
-      printf("%s\n", word);
+	shuffle(word);
+      printf("%s", word);
+      printf("%c", c);
       index = 0;
+      memset(word, 0, sizeof(word));
       }
     }
+  printf("\n");
 
   /*
   for (int i = 0; i<sizeof(fp);i++)
@@ -60,7 +64,7 @@ int main(int argc, char const *argv[])
   */
   fclose(fp);
         /* code */
-	char a[20];
+	/*char a[20];
 
 	printf("Entrez un mot : ");
 	scanf("%s", a);
@@ -70,7 +74,7 @@ int main(int argc, char const *argv[])
 	shuffle(a);
 
 	printf("Le retour est %s\n", a );
-  
+	*/
 
 
 	return 0;
@@ -96,9 +100,9 @@ int shuffle(char* word)
 		swap(&word[i+1], &word[j+1]);
 	}
 
-	printf("the parameter is %s\n", word );
+	//printf("the parameter is %s\n", word );
 
-	printf("%d\n", length);
+	//printf("%d\n", length);
 
 	return 0;
 
