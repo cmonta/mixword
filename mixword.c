@@ -40,13 +40,12 @@ int main(int argc, char const *argv[])
 
   for (int c = fgetc(fp); c!= EOF; c = fgetc(fp))
     {
-      //printf("%c\n", c);
       if (isalpha(c)) {
       word[index] = c;
       index++;
       }
       else {
-	shuffle(word);
+      shuffle(word);
       printf("%s", word);
       printf("%c", c);
       index = 0;
@@ -55,30 +54,8 @@ int main(int argc, char const *argv[])
     }
   printf("\n");
 
-  /*
-  for (int i = 0; i<sizeof(fp);i++)
-    {
-      printf("%s", fp[i]);
-      printf("\n");
-    }
-  */
   fclose(fp);
-        /* code */
-	/*char a[20];
-
-	printf("Entrez un mot : ");
-	scanf("%s", a);
-
-	printf("A est égal à %s\n", a);
-
-	shuffle(a);
-
-	printf("Le retour est %s\n", a );
-	*/
-
-
-	return 0;
-
+  return 0;
 	
 }
 
@@ -99,10 +76,6 @@ int shuffle(char* word)
 
 		swap(&word[i+1], &word[j+1]);
 	}
-
-	//printf("the parameter is %s\n", word );
-
-	//printf("%d\n", length);
 
 	return 0;
 
