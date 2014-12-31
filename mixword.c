@@ -8,6 +8,8 @@
 
 #define LENGTH 25
 
+char EXTENSION[] = "mix_";
+
 int shuffle(char* ptr);
 
 void swap(char* a, char* b);
@@ -26,18 +28,21 @@ int main(int argc, char const *argv[])
   // open file given by argument
   char* text = argv[1];
 
+  char* ofpname = EXTENSION;
+
   //todo create an output filename
+  strcat(ofpname, text);
+
 
   FILE* fp = fopen(text, "r");
   if (fp == NULL)
     {
       printf("Could not open %s.\n", text);
-      //unload();
       return 1;
     }
 
   // open outputfile to write mixed text
-  FILE* ofp = fopen("mixed.txt", "w");
+  FILE* ofp = fopen(ofpname, "w");
   if (ofp == NULL)
     {
       printf("Could not open outputfile");
